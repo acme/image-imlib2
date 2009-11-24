@@ -1,6 +1,6 @@
 Revision history for Perl extension Image::Imlib2.
 
-2.03
+2.03 Tue Nov 24 21:40:49 GMT 2009
     - add a new_transparent method
     - add a create_rotated_image method
     - add a human-readable license

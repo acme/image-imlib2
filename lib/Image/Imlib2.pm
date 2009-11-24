@@ -18,7 +18,7 @@ require DynaLoader;
     TEXT_TO_DOWN
     TEXT_TO_ANGLE
 );
-$VERSION = '2.02';
+$VERSION = '2.03';
 
 bootstrap Image::Imlib2 $VERSION;
 
