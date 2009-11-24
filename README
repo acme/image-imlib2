@@ -89,10 +89,16 @@ METHODS (Image::Imlib2)
     This will create a new, blank image. If the dimensions aren't specified,
     it will default to 256 x 256.
 
-      my $image = Image::Imlib2->new(100, 100)
+      my $image = Image::Imlib2->new(100, 100);
 
     The contents of this image at creation time are undefined - they could
     be garbage memory. You should clear the image if necessary.
+
+  new_transparent
+    This will create a new fully-transparent image. If the dimensions aren't
+    specified, it will default to 256 x 256.
+
+      my $image = Image::Imlib2->new_transparent(100, 100);
 
   new_using_data
     This will create a new image with the specified pixel data, which must
@@ -100,7 +106,7 @@ METHODS (Image::Imlib2)
     to 256 x 256.
 
       my $pixel = pack('CCCC', 255, 127, 0, 255); # ARGB
-      my $image = Image::Imlib2->new(100, 100, $pixel x 100*100)
+      my $image = Image::Imlib2->new_using_data(100, 100, $pixel x (100*100));
 
   load
     This will load an existing graphics file and create a new image object.
@@ -260,17 +266,17 @@ METHODS (Image::Imlib2)
     determine the blur matrix radius that determine how much to blur the
     image.
 
-      $image->blur(1); 
+      $image->blur(1);
 
   sharpen (radius)
     This sharpens the image. The radius affects how much to sharpen by.
 
-      $image->sharpen(1); 
-  
+      $image->sharpen(1);
+
   clone ()
     This creates an exact duplicate of the current image.
 
-      $cloned = $image->clone;   
+      $cloned = $image->clone;
 
   draw_polygon (polygon, closed)
     This will draw polygon (of type Imlib2::Image::Polygon) on the the
@@ -360,7 +366,7 @@ METHODS (Image::Imlib2)
       ... later, somewhere else, after $image has gone away ...
       Image::Imlib2->set_cache_size(0);
       my $image  = Image::Imlib2->load("foo.jpg"); # image loaded from disk  
-      my $image2 = Image::Imlib2->load("foo.jpg"); # same image as before, not reloaded 
+      my $image2 = Image::Imlib2->load("foo.jpg"); # same image as before, not reloaded
 
   get_cache_size ()
     Returns the maximum size of the Image cache.
@@ -378,7 +384,7 @@ METHODS (Image::Imlib2)
       ...later...
 
       # reloads image from disk if mod time has changed (otherwise use cached)
-      my $image = Image::Imlib2->load("foo.jpg"); 
+      my $image = Image::Imlib2->load("foo.jpg");
 
     Calling this method on a loaded image tells Imlib2 to look at the disk
     and compare mtimes with it's loaded copy - by default, this is not the

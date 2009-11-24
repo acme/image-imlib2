@@ -24,6 +24,12 @@ bootstrap Image::Imlib2 $VERSION;
 
 Image::Imlib2->set_cache_size(0);
 
+sub new_transparent {
+    my ( $pkg, $x, $y ) = @_;
+    my $pixel = pack( 'CCCC', 0, 0, 0, 0 );    # ARGB
+    return Image::Imlib2->new_using_data( $x, $y, $pixel x ( $x * $y ) );
+}
+
 sub new_using_data {
     my ( $pkg, $x, $y, $data ) = @_;
     if ( defined $data && 4 * $x * $y == length $data ) {
@@ -35,8 +41,8 @@ sub new_using_data {
 
 sub autocrop {
     my $image = shift;
-    my($x, $y, $w, $h) = $image->autocrop_dimensions;
-    return $image->crop($x, $y, $w, $h);
+    my ( $x, $y, $w, $h ) = $image->autocrop_dimensions;
+    return $image->crop( $x, $y, $w, $h );
 }
 
 1;
@@ -148,10 +154,17 @@ accept it.
 This will create a new, blank image. If the dimensions aren't
 specified, it will default to 256 x 256.
 
-  my $image = Image::Imlib2->new(100, 100)
+  my $image = Image::Imlib2->new(100, 100);
 
 The contents of this image at creation time are undefined - they 
 could be garbage memory. You should clear the image if necessary.
+
+=head2 new_transparent
+
+This will create a new fully-transparent image. If the dimensions
+aren't specified, it will default to 256 x 256.
+
+  my $image = Image::Imlib2->new_transparent(100, 100);
 
 =head2 new_using_data
 
@@ -160,7 +173,7 @@ be a packed string. If the dimensions are not specified, it will
 default to 256 x 256.
 
   my $pixel = pack('CCCC', 255, 127, 0, 255); # ARGB
-  my $image = Image::Imlib2->new(100, 100, $pixel x 100*100)
+  my $image = Image::Imlib2->new_using_data(100, 100, $pixel x (100*100));
 
 =head2 load
 
