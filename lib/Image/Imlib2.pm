@@ -590,7 +590,7 @@ Leon Brocard, acme@astray.com
 
 =head1 COPYRIGHT
 
-Copyright (c) 2000-6 Leon Brocard. All rights reserved.
+Copyright (c) 2000-9 Leon Brocard. All rights reserved.
 
 =head1 LICENSE
 
