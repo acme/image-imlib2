@@ -297,6 +297,12 @@ METHODS (Image::Imlib2)
 
       $image->image_orientate(1);                    # Rotate by 90 degrees.
 
+  create_rotated_image(radians)
+    Create a new image, rotated from the original by a number of radians.
+    For example, to rotate 45 degrees:
+
+      my $rotated = $image->create_rotated_image(45 / 360 * 3.141519*2);
+
   create_scaled_image (x, y)
     Create a new image, scaled from the original to the dimensions given in
     x and y. If x or y are 0, then retain the aspect ratio given in the

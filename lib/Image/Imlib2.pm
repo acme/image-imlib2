@@ -388,6 +388,13 @@ set to 1, for 180 degrees set to 2, etc.
 
   $image->image_orientate(1);                    # Rotate by 90 degrees.
 
+=head2 create_rotated_image(radians)
+
+Create a new image, rotated from the original by a number of radians.
+For example, to rotate 45 degrees:
+
+  my $rotated = $image->create_rotated_image(45 / 360 * 3.141519*2);
+
 =head2 create_scaled_image (x, y)
 
 Create a new image, scaled from the original to the dimensions given in x

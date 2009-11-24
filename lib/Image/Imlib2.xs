@@ -1178,6 +1178,15 @@ Imlib2_create_blended_image(source1, source2, pc)
         OUTPUT:
 	        RETVAL
 
+Image::Imlib2
+Imlib2_create_rotated_image(source, angle)
+	Image::Imlib2 source
+	double angle
+	CODE:
+		imlib_context_set_image(source);
+		RETVAL = imlib_create_rotated_image(angle);
+	OUTPUT:
+		RETVAL
 
 MODULE = Image::Imlib2	PACKAGE = Image::Imlib2::Polygon	PREFIX= Imlib2_Polygon_
 

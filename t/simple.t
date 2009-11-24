@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 use strict;
-use Test::More tests => 19;
+use Test::More tests => 21;
 
 use_ok('Image::Imlib2');
 
@@ -114,5 +114,10 @@ is( $new->has_alpha, 1 );
 my $transparent = Image::Imlib2->new_transparent( 20, 40 );
 is( $transparent->get_width,  20 );
 is( $transparent->get_height, 40 );
+
+# create a rotated image
+my $rotated = $image->create_rotated_image(45 / 360 * 3.141519*2);
+is( $rotated->get_width,  618 );
+is( $rotated->get_height, 618 );
 
 ok( 1, "got to the end" )

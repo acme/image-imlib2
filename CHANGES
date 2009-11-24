@@ -2,6 +2,7 @@ Revision history for Perl extension Image::Imlib2.
 
 2.03
     - add a new_transparent method
+    - add a create_rotated_image method
 
 2.02 Mon Dec  1 11:55:06 GMT 2008
     - update documentation to clarify cache_size
